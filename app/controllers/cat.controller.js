@@ -16,9 +16,12 @@ exports.create = (req, res) => {
   const cat = {
     title: req.body.title,
     description: req.body.description,
-    published: req.body.published ? req.body.published : false
+    published: req.body.published ? req.body.published : false,
+    name: req.body.name,
+    breed: req.body.breed
+    
   };
-
+console.log(cat)
   // Save Cat in the database
   Cat.create(cat)
     .then(data => {

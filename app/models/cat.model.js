@@ -1,35 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
   const Cat = sequelize.define("cat", {
-    title: {
-      type: Sequelize.STRING
-    },
- breed: {
-      type: Sequelize.STRING
-    },
-      microchip: {
-      type: Sequelize.INTEGER
-    },
-       DOB: {
-      type: Sequelize.DATE
-    },
-    status: {
-      type: Sequelize.INTEGER
-    },
-          sex: {
-      type: Sequelize.INTEGER
-    },
-          name: {
-      type: Sequelize.INTEGER
-    },
-          image: {
-      type: Sequelize.INTEGER
-    },
-          remark: {
-      type: Sequelize.INTEGER
-    },
-      centre: {
-      type: Sequelize.STRING
-    },
+  
     title: {
       type: Sequelize.STRING
     },
@@ -38,7 +9,39 @@ module.exports = (sequelize, Sequelize) => {
     },
     published: {
       type: Sequelize.BOOLEAN
+    },
+
+      
+      name: {
+      type: Sequelize.STRING
+    },
+      sex: {
+      type: Sequelize.INTEGER
+    },
+ breed: {
+      type: Sequelize.STRING
+    },
+   
+       DOB: {
+      type: Sequelize.DATE
+    },
+       microchip: {
+      type: Sequelize.INTEGER
+    },
+        centre: {
+      type: Sequelize.STRING
+    },
+    status: {
+      type: Sequelize.INTEGER
+    },
+           
+    image: {
+      type: Sequelize.INTEGER
+    },
+          remark: {
+      type: Sequelize.INTEGER
     }
+    
   });
 
   return Cat;
