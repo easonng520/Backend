@@ -8,10 +8,11 @@ exports.create = (req, res) => {
   if (!req.body.title) {
     res.status(400).send({
       message: "Content can not be empty!"
+     
     });
     return;
   }
-
+  
   // Create a Cat
   const cat = {
     title: req.body.title,
@@ -44,8 +45,8 @@ console.log(cat)
 
 // Retrieve all Cats from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.iLike]: `%${title}%` } } : null;
+  const name = req.query.name;
+  var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
 
   Cat.findAll({ where: condition })
     .then(data => {

@@ -23,7 +23,7 @@ module.exports = (sequelize, Sequelize) => {
     },
    
        DOB: {
-      type: Sequelize.DATEONLY
+      type: Sequelize.STRING
     },
        microchip: {
       type: Sequelize.STRING
