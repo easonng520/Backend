@@ -16,30 +16,30 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
       sex: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
  breed: {
       type: Sequelize.STRING
     },
    
        DOB: {
-      type: Sequelize.DATE
+      type: Sequelize.DATEONLY
     },
        microchip: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
         centre: {
       type: Sequelize.STRING
     },
     status: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
            
     image: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
           remark: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     }
     
   });

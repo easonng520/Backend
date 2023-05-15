@@ -18,7 +18,14 @@ exports.create = (req, res) => {
     description: req.body.description,
     published: req.body.published ? req.body.published : false,
     name: req.body.name,
-    breed: req.body.breed
+    sex: req.body.sex,
+    breed: req.body.breed,
+    DOB: req.body.DOB,
+     microchip: req.body.microchip,
+     centre: req.body.centre,
+    status: req.body.status,
+    image: req.body.image,
+    remark: req.body.remark,
     
   };
 console.log(cat)
