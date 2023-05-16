@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Cat
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  if (!req.body.name) {
     res.status(400).send({
       message: "Content can not be empty!"
      
@@ -15,7 +15,7 @@ exports.create = (req, res) => {
   
   // Create a Cat
   const cat = {
-    title: req.body.title,
+    name: req.body.name,
     description: req.body.description,
     published: req.body.published ? req.body.published : false,
     name: req.body.name,
