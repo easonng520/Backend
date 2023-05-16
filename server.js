@@ -22,6 +22,7 @@ const db = require("./app/models");
 const Role = db.role;
 const Centre = db.centre;
 const Breed = db.breed;
+const Cat = db.cats;
 
  db.sequelize.sync();
 // force: true will drop the table if it already exists
@@ -50,6 +51,7 @@ app.listen(PORT, () => {
 });
 
 function initial() {
+ 
   Role.create({
     id: 1,
     name: "user"
@@ -121,4 +123,33 @@ function initial() {
     id: 5,
     name: "Scottish Fold"
   });
+
+
+ Cat.create({
+   image:"1.jpg",
+    name: "Muffin",
+    centre: "Kowloon Centre",
+  breed:"Scottish Fold",
+   DOB:"11/12/2020",
+   microchip:"314 985 631"
+  });
+    
+ Cat.create({
+    image:"2.jpg",
+      name: "Cathy",
+    centre: "Mui Wo Clinic",
+  breed:"Domestic Short Hair",
+   DOB:"13/1/2021",
+   microchip:"514 941 531"
+  });
+
+   Cat.create({
+    image:"3.jpg",
+      name: "Della",
+    centre: "Hong Kong Centre",
+  breed:"Bengal Cross",
+   DOB:"13/8/2022",
+   microchip:"533 761 93"
+  });
+
 }

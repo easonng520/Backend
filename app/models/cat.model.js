@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Cat = sequelize.define("cat", {
+  const Cat = sequelize.define("cats", {
   
     title: {
       type: Sequelize.STRING
@@ -10,8 +10,10 @@ module.exports = (sequelize, Sequelize) => {
     published: {
       type: Sequelize.BOOLEAN
     },
-
-      
+    
+      image: {
+      type: Sequelize.STRING
+    },
       name: {
       type: Sequelize.STRING
     },
@@ -34,11 +36,7 @@ module.exports = (sequelize, Sequelize) => {
     status: {
       type: Sequelize.STRING
     },
-           
-    image: {
-      type: Sequelize.STRING
-    },
-          remark: {
+  remark: {
       type: Sequelize.STRING
     }
     

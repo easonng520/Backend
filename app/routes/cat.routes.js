@@ -9,6 +9,13 @@ module.exports = app => {
   // Retrieve all Cats
   router.get("/", cats.findAll);
 
+    // Retrieve all Cats Centre
+  router.get("/centre", cats.findCentre);
+
+    // Retrieve all Cats Breed
+  router.get("/breed", cats.findBreed);
+
+  
   // Retrieve all published Cats
   router.get("/published", cats.findAllPublished);
 

@@ -60,6 +60,41 @@ exports.findAll = (req, res) => {
     });
 };
 
+// Retrieve all Cats from the database Filter by Centre.
+exports.findCentre = (req, res) => {
+  const centre = req.query.centre;
+  var condition = centre ? { centre: { [Op.iLike]: `%${centre}%` } } : null;
+
+  Cat.findCentre({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving cats."
+      });
+    });
+};
+
+// Retrieve all Cats from the database Filter by Breed.
+exports.findBreed = (req, res) => {
+  const breed = req.query.breed;
+  var condition = breed ? { breed: { [Op.iLike]: `%${breed}%` } } : null;
+
+  Cat.findCentre({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving cats."
+      });
+    });
+};
+
+
 // Find a single Cat with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
