@@ -8,11 +8,11 @@ exports.create = (req, res) => {
   if (!req.body.name) {
     res.status(400).send({
       message: "Content can not be empty!"
-     
+
     });
     return;
   }
-  
+
   // Create a Cat
   const cat = {
     name: req.body.name,
@@ -22,14 +22,14 @@ exports.create = (req, res) => {
     sex: req.body.sex,
     breed: req.body.breed,
     DOB: req.body.DOB,
-     microchip: req.body.microchip,
-     centre: req.body.centre,
+    microchip: req.body.microchip,
+    centre: req.body.centre,
     status: req.body.status,
     image: req.body.image,
     remark: req.body.remark,
-    
+
   };
-console.log(cat)
+  console.log(cat)
   // Save Cat in the database
   Cat.create(cat)
     .then(data => {
@@ -60,39 +60,8 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Retrieve all Cats from the database Filter by Centre.
-exports.findCentre = (req, res) => {
-  const centre = req.query.centre;
-  var condition = centre ? { centre: { [Op.iLike]: `%${centre}%` } } : null;
 
-  Cat.findCentre({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving cats."
-      });
-    });
-};
 
-// Retrieve all Cats from the database Filter by Breed.
-exports.findBreed = (req, res) => {
-  const breed = req.query.breed;
-  var condition = breed ? { breed: { [Op.iLike]: `%${breed}%` } } : null;
-
-  Cat.findCentre({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving cats."
-      });
-    });
-};
 
 
 // Find a single Cat with an id
@@ -180,6 +149,41 @@ exports.deleteAll = (req, res) => {
 // find all published Cat
 exports.findAllPublished = (req, res) => {
   Cat.findAll({ where: { published: true } })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving cats."
+      });
+    });
+};
+
+
+// find all centre Cat
+exports.findCentre = (req, res) => {
+  const centre = req.query.centre;
+  var condition = centre ? { centre: { [Op.iLike]: `%${centre}%` } } : null;
+
+  Cat.findAll({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving cats."
+      });
+    });
+};
+
+// find all breed Cat
+exports.findBreed = (req, res) => {
+  const breed = req.query.breed;
+  var condition = breed ? { breed: { [Op.iLike]: `%${breed}%` } } : null;
+
+  Cat.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
