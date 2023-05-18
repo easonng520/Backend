@@ -13,6 +13,7 @@ exports.signup = (req, res) => {
   User.create({
     username: req.body.username,
     email: req.body.email,
+    centre: req.body.centre,
     password: bcrypt.hashSync(req.body.password, 8)
   })
     .then(user => {
@@ -30,7 +31,7 @@ exports.signup = (req, res) => {
         });
       } else {
         // user role = 1
-        user.setRoles([3]).then(() => {
+        user.setRoles([1]).then(() => {
           res.send({ message: "User registered successfully!" });
         });
       }
@@ -76,6 +77,7 @@ exports.signin = (req, res) => {
           id: user.id,
           username: user.username,
           email: user.email,
+          centre: user.centre,
           roles: authorities,
           accessToken: token
         });
