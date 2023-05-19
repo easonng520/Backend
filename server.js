@@ -4,6 +4,8 @@ const cors = require("cors");
 
 const app = express();
 
+global.__basedir = __dirname;
+
 var corsOptions = {
   //origin: "http://localhost:8081"
   origin: "*"
@@ -42,6 +44,7 @@ app.get("/", (req, res) => {
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require("./app/routes/cat.routes")(app);
+require("./app/routes/upload.routes")(app);
 
 
 // set port, listen for requests
