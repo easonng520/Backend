@@ -2,13 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-
-
 const app = express();
 
 
 //Docs
-var path = require("path");
+//var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var { initialize } = require("express-openapi");
