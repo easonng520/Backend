@@ -2,7 +2,42 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+
+
 const app = express();
+
+
+//Docs
+var path = require("path");
+var cookieParser = require("cookie-parser");
+var logger = require("morgan");
+var { initialize } = require("express-openapi");
+var swaggerUi = require("swagger-ui-express");
+
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
+// OpenAPI routes
+initialize({
+  app,
+  apiDoc: require("./app/docs/api-doc"),
+  paths: "./app/docs/paths",
+});
+
+
+// OpenAPI UI
+app.use(
+  "/api-documentation",
+  swaggerUi.serve,
+  swaggerUi.setup(null, {
+    swaggerOptions: {
+      url: "https://backend.easonng520.repl.co/api-docs",
+    },
+  })
+);
+
 
 global.__basedir = __dirname;
 
@@ -10,6 +45,8 @@ var corsOptions = {
   //origin: "http://localhost:8081"
   origin: "*"
 };
+
+
 
 app.use(cors(corsOptions));
 
@@ -43,7 +80,6 @@ app.get("/", (req, res) => {
 // routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
-require("./app/routes/cat.routes")(app);
 require("./app/routes/upload.routes")(app);
 
 
