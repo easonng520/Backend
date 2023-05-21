@@ -2,8 +2,11 @@
 https://medium.com/bb-tutorials-and-thoughts/how-to-write-unit-tests-in-nodejs-with-jest-test-library-a201658829c7
 https://www.albertgao.xyz/2017/05/24/how-to-test-expressjs-with-jest-and-supertest/
 https://www.freecodecamp.org/news/how-to-test-in-express-and-mongoose-apps/
+
+### run test
 npx jest
-node test/calculator.test.js
+###generate the reports
+jest --coverage
 
 ###Documentation using OpenAPI and JSDoc
 https://backend.easonng520.repl.co/api-documentation/#/
