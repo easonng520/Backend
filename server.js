@@ -1,9 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
 const app = express();
-
 
 //Docs
 //var path = require("path");
@@ -24,7 +22,6 @@ initialize({
   paths: "./app/docs/paths",
 });
 
-
 // OpenAPI UI
 app.use(
   "/api-documentation",
@@ -36,15 +33,12 @@ app.use(
   })
 );
 
-
 global.__basedir = __dirname;
 
 var corsOptions = {
   //origin: "http://localhost:8081"
   origin: "*"
 };
-
-
 
 app.use(cors(corsOptions));
 
@@ -63,12 +57,12 @@ const Cat = db.cats;
 
  db.sequelize.sync();
 // force: true will drop the table if it already exists
-
+/*
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Database with { force: true }');
   initial();
 });
-
+*/
 
 // simple route
 app.get("/", (req, res) => {
@@ -81,7 +75,6 @@ require('./app/routes/user.routes')(app);
 require("./app/routes/upload.routes")(app);
 require("./app/routes/cat.routes")(app);
 
-
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
@@ -89,7 +82,6 @@ app.listen(PORT, () => {
 });
 
 function initial() {
- 
   Role.create({
     id: 1,
     name: "user"
@@ -105,7 +97,7 @@ function initial() {
     name: "admin"
   });
 
-     Centre.create({
+  Centre.create({
     id: 1,
     name: "Hong Kong Centre",
     address:"5 Wan Shing Street, Wan Chai, Hong Kong",

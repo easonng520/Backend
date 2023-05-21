@@ -1,17 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
   const Cat = sequelize.define("cats", {
-  
-    title: {
-      type: Sequelize.STRING
-    },
-    description: {
-      type: Sequelize.STRING
-    },
     published: {
       type: Sequelize.BOOLEAN
     },
-    
-      image: {
+   image: {
       type: Sequelize.STRING
     },
       name: {
@@ -23,8 +15,7 @@ module.exports = (sequelize, Sequelize) => {
  breed: {
       type: Sequelize.STRING
     },
-   
-       DOB: {
+   DOB: {
       type: Sequelize.STRING
     },
        microchip: {

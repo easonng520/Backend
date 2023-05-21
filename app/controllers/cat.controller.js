@@ -8,15 +8,13 @@ exports.create = (req, res) => {
   if (!req.body.name) {
     res.status(400).send({
       message: "Content can not be empty!"
-
-    });
+   });
     return;
   }
 
   // Create a Cat
   const cat = {
     name: req.body.name,
-    description: req.body.description,
     published: req.body.published ? req.body.published : false,
     name: req.body.name,
     sex: req.body.sex,
@@ -47,7 +45,6 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const name = req.query.name;
   var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
-
   Cat.findAll({ where: condition })
     .then(data => {
       res.send(data);
@@ -63,8 +60,7 @@ exports.findAll = (req, res) => {
 // Find a single Cat with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
-
-  Cat.findByPk(id)
+ Cat.findByPk(id)
     .then(data => {
       res.send(data);
     })
@@ -178,7 +174,7 @@ exports.findCentre = (req, res) => {
 exports.findBreed = (req, res) => {
   const breed = req.query.breed;
   var condition = breed ? { breed: { [Op.iLike]: `%${breed}%` } } : null;
-
+console.log(condition)
   Cat.findAll({ where: condition })
     .then(data => {
       res.send(data);
@@ -189,4 +185,22 @@ exports.findBreed = (req, res) => {
           err.message || "Some error occurred while retrieving cats."
       });
     });
+};
+
+// Retrieve Favourite Cats from the database.
+exports.findFavourite = (req, res) => {
+  const favourite = req.query.favourite;
+  var condition = favourite ? { centre: { [Op.iLike]: `%${favourite}%` } } : null;
+console.log(condition)
+  Cat.findAll({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving cats."
+      });
+    });
+  
 };

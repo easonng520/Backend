@@ -15,7 +15,9 @@ module.exports = app => {
     // Retrieve all Cats Breed
   router.get("/breed", cats.findBreed);
 
-  
+   // Retrieve all Cats Favourite
+  router.get("/favourite", cats.findFavourite);
+
   // Retrieve all published Cats
   router.get("/published", cats.findAllPublished);
 
