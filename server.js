@@ -3,48 +3,26 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 
-//Docs
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger_output.json')
+
 //var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-var { initialize } = require("express-openapi");
-var swaggerUi = require("swagger-ui-express");
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// OpenAPI routes
-initialize({
-  app,
-  apiDoc: require("./app/docs/api-doc"),
-  paths: "./app/docs/paths",
-});
-
-// OpenAPI UI
-app.use(
-  "/api-documentation",
-  swaggerUi.serve,
-  swaggerUi.setup(null, {
-    swaggerOptions: {
-      url: "https://backend.easonng520.repl.co/api-docs",
-    },
-  })
-);
-
-global.__basedir = __dirname;
-
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 var corsOptions = {
   //origin: "http://localhost:8081"
   origin: "*"
 };
 
 app.use(cors(corsOptions));
-
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
-
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
