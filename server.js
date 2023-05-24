@@ -15,6 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
+global.__basedir = __dirname;
+
 var corsOptions = {
   //origin: "http://localhost:8081"
   origin: "*"
@@ -35,12 +38,12 @@ const Cat = db.cats;
 
  db.sequelize.sync();
 // force: true will drop the table if it already exists
-/*
+
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Database with { force: true }');
   initial();
 });
-*/
+
 
 // simple route
 app.get("/", (req, res) => {
@@ -136,28 +139,31 @@ function initial() {
  Cat.create({
    image:"1.jpg",
     name: "Muffin",
+sex:"Male",   
     centre: "Kowloon Centre",
   breed:"Scottish Fold",
-   DOB:"11/12/2020",
-   microchip:"314 985 631"
+   DOB:"2021-1-1",
+   microchip:"314985631"
   });
     
  Cat.create({
     image:"2.jpg",
       name: "Cathy",
+   sex:"Male", 
     centre: "Mui Wo Clinic",
   breed:"Domestic Short Hair",
-   DOB:"13/1/2021",
-   microchip:"514 941 531"
+   DOB:"2021-1-1",
+   microchip:"514941531"
   });
 
    Cat.create({
     image:"3.jpg",
       name: "Della",
+     sex:"Male", 
     centre: "Hong Kong Centre",
   breed:"Bengal Cross",
-   DOB:"13/8/2022",
-   microchip:"533 761 93"
+   DOB:"2021-1-1",
+   microchip:"53376193"
   });
 
 }
