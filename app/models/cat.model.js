@@ -1,6 +1,17 @@
 module.exports = (sequelize, Sequelize) => {
-  const Cat = sequelize.define("cats", {
-    published: {
+  const Image = sequelize.define("cats", {
+    type: {
+      type: Sequelize.STRING,
+    },
+    filename: {
+      type: Sequelize.STRING,
+    },
+    data: {
+      type: Sequelize.BLOB("long"),
+    },
+
+
+published: {
       type: Sequelize.BOOLEAN
     },
    image: {
@@ -30,8 +41,12 @@ module.exports = (sequelize, Sequelize) => {
   remark: {
       type: Sequelize.STRING
     }
+
+
     
   });
 
-  return Cat;
+  return Image;
 };
+
+
