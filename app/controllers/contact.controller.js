@@ -188,27 +188,9 @@ console.log(condition)
 };
 
 // Retrieve Favourite Cats from the database.
-exports.CatsListfavourites = (req, res) => {
-  const favourites = req.query.favourite;
-  var condition = favourites ? { centre: { [Op.iLike]: `%${favourites}%` } } : null;
-console.log(condition)
-  Cat.findAll({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving cats."
-      });
-    });
-  
-};
-
-// Retrieve Favourite Cats from the database.
-exports.findFavouritesAll = (req, res) => {
-  const favourites = req.query.favourites;
-  var condition = favourites ? { centre: { [Op.iLike]: `%${favourites}%` } } : null;
+exports.findFavourites = (req, res) => {
+  const favourite = req.query.favourite;
+  var condition = favourite ? { centre: { [Op.iLike]: `%${favourite}%` } } : null;
 console.log(condition)
   Cat.findAll({ where: condition })
     .then(data => {

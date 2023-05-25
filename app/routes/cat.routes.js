@@ -16,7 +16,10 @@ module.exports = app => {
   router.get("/breed", cats.findBreed);
 
    // Retrieve all Cats Favourite
-  router.get("/favourite", cats.findFavourite);
+  router.get("/CatsListfavourites", cats.CatsListfavourites);
+
+     // Retrieve all Cats Favourite
+  router.get("/favouritesAll", cats.findFavouritesAll);
 
   // Retrieve all published Cats
   router.get("/published", cats.findAllPublished);
