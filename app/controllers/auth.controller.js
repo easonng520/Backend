@@ -14,6 +14,7 @@ exports.signup = (req, res) => {
     username: req.body.username,
     email: req.body.email,
     centre: req.body.centre,
+    favourites: req.body.centre,
     password: bcrypt.hashSync(req.body.password, 8)
   })
     .then(user => {
@@ -84,7 +85,8 @@ exports.signin = (req, res) => {
           email: user.email,
           centre: user.centre,
           roles: authorities,
-          accessToken: token
+          accessToken: token,
+          favourites: user.favourites,
         });
       });
     })

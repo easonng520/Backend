@@ -1,6 +1,4 @@
 const db = require("../models");
-
-
 const Cat = db.cats;
 const Op = db.Sequelize.Op;
 
