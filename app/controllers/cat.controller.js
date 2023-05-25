@@ -1,4 +1,6 @@
 const db = require("../models");
+
+
 const Cat = db.cats;
 const Op = db.Sequelize.Op;
 
@@ -174,7 +176,6 @@ exports.findCentre = (req, res) => {
 exports.findBreed = (req, res) => {
   const breed = req.query.breed;
   var condition = breed ? { breed: { [Op.iLike]: `%${breed}%` } } : null;
-console.log(condition)
   Cat.findAll({ where: condition })
     .then(data => {
       res.send(data);
@@ -185,31 +186,12 @@ console.log(condition)
           err.message || "Some error occurred while retrieving cats."
       });
     });
-};
-
-// Retrieve Favourite Cats from the database.
-exports.CatsListfavourites = (req, res) => {
-  const favourites = req.query.favourite;
-  var condition = favourites ? { centre: { [Op.iLike]: `%${favourites}%` } } : null;
-console.log(condition)
-  Cat.findAll({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving cats."
-      });
-    });
-  
 };
 
 // Retrieve Favourite Cats from the database.
 exports.findFavouritesAll = (req, res) => {
-  const favourites = req.query.favourites;
-  var condition = favourites ? { centre: { [Op.iLike]: `%${favourites}%` } } : null;
-console.log(condition)
+  const breed = req.query.breed;
+  var condition = breed ? { breed: { [Op.iLike]: `%${breed}%` } } : null;
   Cat.findAll({ where: condition })
     .then(data => {
       res.send(data);
@@ -219,7 +201,31 @@ console.log(condition)
         message:
           err.message || "Some error occurred while retrieving cats."
       });
-    });
-  
+    });   
 };
+
+exports.CatsListfavourites = (req, res) => {
+  
+ const list = req.query.list
+ const array = JSON.parse("["+list+"]");
+    //console.log(array)
+let result = array.map(i=>Number(i));
+//  console.log(result)
+  Cat.findAll({ where: {
+    id: { [Op.in]: result },
+  }, })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving cats."
+      });
+    });
+};
+
+
+
+
 
