@@ -38,7 +38,7 @@ published: {
     status: {
       type: Sequelize.STRING
     },
-  remark: {
+  favourites: {
       type: Sequelize.STRING
     }
 

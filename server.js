@@ -158,7 +158,8 @@ sex:"Male",
     centre: "Mui Wo Clinic",
   breed:"Domestic Short Hair",
    DOB:"2021-1-1",
-   microchip:"514941531"
+   microchip:"514941531",
+     favourites:"1"
   });
 
    Cat.create({
@@ -168,7 +169,8 @@ sex:"Male",
     centre: "Hong Kong Centre",
   breed:"Bengal Cross",
    DOB:"2021-1-1",
-   microchip:"53376193"
+   microchip:"53376193",
+     favourites:"1,2"
   });
 
 }
