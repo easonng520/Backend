@@ -18,10 +18,11 @@ console.log(arrayWithoutD); // ['a', 'b', 'c', 'e', 'f']
   
   const id = req.params.id;
    const catid = req.params.catid;
-  
-  const email = "a";
-  console.log(catid)
-  User.update({email:email}, {
+    const favourites = req.query.favourites
+
+ // const email = "a";
+ // console.log(catid)
+  User.update({favourites:favourites}, {
     where: { id: id }
   })
     .then(num => {
