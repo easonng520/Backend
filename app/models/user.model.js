@@ -12,9 +12,6 @@ module.exports = (sequelize, Sequelize) => {
     },
       centre: {
       type: Sequelize.STRING
-    },
-        favourites: {
-      type: Sequelize.STRING
     }
   });
 

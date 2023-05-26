@@ -1,5 +1,5 @@
 const db = require("../models");
-const User = db.user;
+const Cat = db.cats;
 const Op = db.Sequelize.Op;
 
 // Update a Cat by the id in the request
@@ -17,12 +17,16 @@ console.log(arrayOfLetters); // ['a', 'b', 'c', 'd', 'e', 'f']
 console.log(arrayWithoutD); // ['a', 'b', 'c', 'e', 'f']
   
   const id = req.params.id;
-   const catid = req.params.catid;
-    const favourites = req.query.favourites
+   const bodyFavourites = req.body.favourites;
+  const paramsFavourites = req.params.favourites;
+    const queryFavourites = req.query.favourites;
+ 
 
- // const email = "a";
- // console.log(catid)
-  User.update({favourites:favourites}, {
+ console.log('bodyFavourites:'+bodyFavourites)
+   console.log('paramsFavourites:'+paramsFavourites)
+  console.log('queryFavourites:'+queryFavourites)
+  
+  Cat.update({favourites:bodyFavourites}, {
     where: { id: id }
   })
     .then(num => {
