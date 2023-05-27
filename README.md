@@ -1,9 +1,13 @@
-##Testing
+##Testing jest supertest
 https://medium.com/bb-tutorials-and-thoughts/how-to-write-unit-tests-in-nodejs-with-jest-test-library-a201658829c7
 https://www.albertgao.xyz/2017/05/24/how-to-test-expressjs-with-jest-and-supertest/
 https://www.freecodecamp.org/news/how-to-test-in-express-and-mongoose-apps/
 
+https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6
+
+
 ### run test
+
 npx jest
 ###generate the reports
 jest --coverage
@@ -20,6 +24,7 @@ npm run swagger-autogen
 ###ESlint
 https://medium.com/@yyc4code/js-在express中設定eslint-caec89272dbe
 https://eslint.org/docs/latest/use/getting-started
+npm init @eslint/config
 npx eslint yourfile.js
 
 
