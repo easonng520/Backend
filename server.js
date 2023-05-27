@@ -40,11 +40,12 @@ const Message = db.messages;
  db.sequelize.sync();
 // force: true will drop the table if it already exists
 
+/*
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Database with { force: true }');
   initial();
 });
-
+*/
 
 // simple route
 app.get("/", (req, res) => {
@@ -185,14 +186,13 @@ catid:2
     
  Message.create({
     message:"Message 2",
-      reply: "Cathy",
+      reply: "Reply 2",
 catid:1
   });
 
  Message.create({
     message:"Message 3",
-     
-catid:1
+    catid:1
   });
   
   Message.create({
