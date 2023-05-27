@@ -35,16 +35,17 @@ const Role = db.role;
 const Centre = db.centre;
 const Breed = db.breed;
 const Cat = db.cats;
+const Message = db.messages;
 
  db.sequelize.sync();
 // force: true will drop the table if it already exists
-/*
+
 db.sequelize.sync({force: true}).then(() => {
   console.log('Drop and Resync Database with { force: true }');
   initial();
 });
 
-*/
+
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to loveCATS application." });
@@ -58,6 +59,8 @@ require("./app/routes/cat.routes")(app);
 require("./app/routes/contact.routes")(app);
 
 require("./app/routes/favourites.routes")(app);
+
+require("./app/routes/message.routes")(app);
 
 
 
@@ -173,4 +176,29 @@ sex:"Male",
      favourites:"1,2"
   });
 
+
+  Message.create({
+   image:"1.jpg",
+    name: "Muffin",
+sex:"Male",   
+    centre: "Kowloon Centre",
+  breed:"Scottish Fold",
+   DOB:"2021-1-1",
+   microchip:"314985631"
+  });
+    
+ Message.create({
+    image:"2.jpg",
+      name: "Cathy",
+   sex:"Male", 
+    centre: "Mui Wo Clinic",
+  breed:"Domestic Short Hair",
+   DOB:"2021-1-1",
+   microchip:"514941531",
+     favourites:"1"
+  });
+
+   
+   
+  
 }

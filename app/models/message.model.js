@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Cat = sequelize.define("cats", {
+  const Message = sequelize.define("messages", {
     type: {
       type: Sequelize.STRING,
     },
@@ -46,7 +46,7 @@ published: {
     
   });
 
-  return Cat;
+  return Message;
 };
 
 

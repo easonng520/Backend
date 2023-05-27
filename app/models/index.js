@@ -28,6 +28,7 @@ db.role = require("../models/role.model.js")(sequelize, Sequelize);
 db.cats = require("./cat.model.js")(sequelize, Sequelize);
 db.centre = require("../models/centre.model.js")(sequelize, Sequelize);
 db.breed = require("../models/breed.model.js")(sequelize, Sequelize);
+db.messages = require("../models/message.model.js")(sequelize, Sequelize);
 
 db.role.belongsToMany(db.user, {
   through: "user_roles",
