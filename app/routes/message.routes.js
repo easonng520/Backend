@@ -10,6 +10,8 @@ module.exports = app => {
 
   // Update a Message with id
   router.put("/:id", messages.update);
-
+  
+  // Delete a Message with id
+  router.delete("/:id", messages.delete);
   app.use("/api/messages", router);
 };

@@ -23,8 +23,8 @@ exports.create = (req, res) => {
   
   // Create a Cat
   const message = {
-    message: req.body.message,
-    catid: req.body.catid
+    message: req.query.message,
+    catid: req.query.catid
 
   };
   console.log(message)
@@ -61,11 +61,23 @@ exports.findAll = (req, res) => {
 
 // Update a Cat by the id in the request
 exports.update = (req, res) => {
-  const id = req.params.id;
 
-  Message.update(req.body, {
+  
+  const id = req.params.id;
+console.log("paramsid"+id)
+ 
+     const bodyMessage = req.body.message;
+  const paramsMessage = req.params.message;
+    const queryMessage = req.query.message;
+   console.log('bodyMessage:'+bodyMessage)
+   console.log('paramsMessage:'+paramsMessage)
+  console.log('queryMessage:'+queryMessage)
+  
+ 
+    Message.update({message:queryMessage}, {
     where: { id: id }
   })
+
     .then(num => {
       if (num == 1) {
         res.send({
