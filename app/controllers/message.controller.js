@@ -1,5 +1,5 @@
 const db = require("../models");
-const Cat = db.messages;
+const Message = db.messages;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Cat
@@ -45,7 +45,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const name = req.query.name;
   var condition = name ? { name: { [Op.iLike]: `%${name}%` } } : null;
-  Cat.findAll({ where: condition })
+  Message.findAll({ where: condition })
     .then(data => {
       res.send(data);
     })
@@ -60,7 +60,7 @@ exports.findAll = (req, res) => {
 // Find a single Cat with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
- Cat.findByPk(id)
+ Message.findByPk(id)
     .then(data => {
       res.send(data);
     })
@@ -75,7 +75,7 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
   const id = req.params.id;
 
-  Cat.update(req.body, {
+  Message.update(req.body, {
     where: { id: id }
   })
     .then(num => {
@@ -100,7 +100,7 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Cat.destroy({
+  Message.destroy({
     where: { id: id }
   })
     .then(num => {
@@ -120,110 +120,4 @@ exports.delete = (req, res) => {
       });
     });
 };
-
-// Delete all Cats from the database.
-exports.deleteAll = (req, res) => {
-  Cat.destroy({
-    where: {},
-    truncate: false
-  })
-    .then(nums => {
-      res.send({ message: `${nums} Cats were deleted successfully!` });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all cats."
-      });
-    });
-};
-
-// find all published Cat
-exports.findAllPublished = (req, res) => {
-  Cat.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving cats."
-      });
-    });
-};
-
-
-// find all centre Cat
-exports.findCentre = (req, res) => {
-  const centre = req.query.centre;
-  var condition = centre ? { centre: { [Op.iLike]: `%${centre}%` } } : null;
-
-  Cat.findAll({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving cats."
-      });
-    });
-};
-
-// find all breed Cat
-exports.findBreed = (req, res) => {
-  const breed = req.query.breed;
-  var condition = breed ? { breed: { [Op.iLike]: `%${breed}%` } } : null;
-  Cat.findAll({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving cats."
-      });
-    });
-};
-
-// Retrieve Favourite Cats from the database.
-exports.findFavouritesAll = (req, res) => {
-  const breed = req.query.breed;
-  var condition = breed ? { breed: { [Op.iLike]: `%${breed}%` } } : null;
-  Cat.findAll({ where: condition })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving cats."
-      });
-    });   
-};
-
-exports.CatsListfavourites = (req, res) => {
-  
- const list = req.query.list
- const array = JSON.parse("["+list+"]");
-    //console.log(array)
-let result = array.map(i=>Number(i));
-//  console.log(result)
-  Cat.findAll({ where: {
-    id: { [Op.in]: result },
-  }, })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving cats."
-      });
-    });
-};
-
-
-
-
 

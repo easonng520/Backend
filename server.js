@@ -178,27 +178,28 @@ sex:"Male",
 
 
   Message.create({
-   image:"1.jpg",
-    name: "Muffin",
-sex:"Male",   
-    centre: "Kowloon Centre",
-  breed:"Scottish Fold",
-   DOB:"2021-1-1",
-   microchip:"314985631"
+   message:"Message 1",
+    reply: "Reply 1",
+catid:2
   });
     
  Message.create({
-    image:"2.jpg",
-      name: "Cathy",
-   sex:"Male", 
-    centre: "Mui Wo Clinic",
-  breed:"Domestic Short Hair",
-   DOB:"2021-1-1",
-   microchip:"514941531",
-     favourites:"1"
+    message:"Message 2",
+      reply: "Cathy",
+catid:1
   });
 
-   
+ Message.create({
+    message:"Message 3",
+     
+catid:1
+  });
+  
+  Message.create({
+    message:"Message 4",
+      reply: "Reply 4",
+catid:1
+  });
    
   
 }
