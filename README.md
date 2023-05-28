@@ -13,7 +13,7 @@ npx jest
 jest --coverage
 
 ###Documentation using OpenAPI and JSDoc
-https://backend.easonng520.repl.co/api-documentation/#/
+https://backend.easonng520.repl.co/doc/
 
 https://www.freecodecamp.org/news/how-to-build-explicit-apis-with-openapi/
 https://losikov.medium.com/part-2-express-open-api-3-0-634385c97a4e
