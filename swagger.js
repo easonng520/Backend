@@ -8,5 +8,6 @@ const doc = {
   schemes: ['https'],
 };
 const outputFile = './swagger_output.json'
-const endpointsFiles = ['./app/routes/auth.routes','./app/routes/cat.routes','./app/routes/upload.routes','./app/routes/user.routes']
+
+const endpointsFiles = ['./app/routes/auth.routes','./app/routes/cat.routes','./app/routes/favourites.routes','./app/routes/message.routes','./app/routes/upload.routes','./app/routes/user.routes']
 swaggerAutogen(outputFile, endpointsFiles,doc)

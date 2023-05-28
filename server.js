@@ -2,9 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-
-const swaggerUi = require('swagger-ui-express')
-const swaggerFile = require('./swagger_output.json')
+//const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger_output.json');
 
 //var path = require("path");
 var cookieParser = require("cookie-parser");
@@ -14,7 +14,9 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
+
 
 global.__basedir = __dirname;
 
@@ -57,10 +59,7 @@ require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require("./app/routes/upload.routes")(app);
 require("./app/routes/cat.routes")(app);
-require("./app/routes/contact.routes")(app);
-
 require("./app/routes/favourites.routes")(app);
-
 require("./app/routes/message.routes")(app);
 
 
@@ -160,10 +159,10 @@ sex:"Male",
       name: "Cathy",
    sex:"Male", 
     centre: "Mui Wo Clinic",
-  breed:"Domestic Short Hair",
+  breed:"Bengal Cross",
    DOB:"2021-1-1",
-   microchip:"514941531",
-     favourites:"1"
+   microchip:"514941531"
+    // favourites:"1"
   });
 
    Cat.create({
@@ -173,8 +172,8 @@ sex:"Male",
     centre: "Hong Kong Centre",
   breed:"Bengal Cross",
    DOB:"2021-1-1",
-   microchip:"53376193",
-     favourites:"1,2"
+   microchip:"53376193"
+     //favourites:"1,2"
   });
 
 
